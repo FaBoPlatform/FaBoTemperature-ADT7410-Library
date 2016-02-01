@@ -1,16 +1,16 @@
-# FaBo3Axis-ADXL345-Library
+# FaBoTemperature-ADT7410-Library
 
-# FaBo3Axis
+# FaBoTemperature
 
-This is a library for FaBo 3Aixs Brick.
+This is a library for FaBo Temperature Brick.
 
-# ADXL345
+# ADT7410
 
-ADXL345 is 3axis sensor.
+ADT7410 is Temperature sensor.
 
 # Datasheet
 
-[ADXL345 Datasheet](http://www.analog.com/media/en/technical-documentation/data-sheets/ADXL345.PDF)
+[ADT7410 Datasheet](http://www.analog.com/media/en/technical-documentation/data-sheets/ADT7410.pdf)
 
 # Releases
 
