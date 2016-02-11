@@ -1,8 +1,6 @@
 #include <Wire.h>
 #include "fabo-adt7410.h"
 
-#define DEVICE_ADDR (0x48)
-
 void setup() {
   Serial.begin(9600);
   

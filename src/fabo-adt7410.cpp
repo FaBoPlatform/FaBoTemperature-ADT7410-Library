@@ -1,30 +1,30 @@
 #include "fabo-adt7410.h"
 
-bool adt7410::searchDevice()
+bool FaBoTemperature::searchDevice()
 {
   byte device = 0x00;
   readI2c(ADT7410_WHO_AM_I_REG, 1, &device);
   
   if((device & ADT7410_DEVICE) == ADT7410_DEVICE){
-      return true;
+    return true;
   } else {
-      return false;
+    return false;
   }
 }
 
-void adt7410::configure()
+void FaBoTemperature::configure()
 {
-   byte conf = ADT7410_16BIT_RESOLUTIION;
-   conf |= ADT7410_16BIT_OP_MODE_1FAULT;
-   conf |= ADT7410_CT_LOW;
-   conf |= ADT7410_INT_LOW;
-   conf |= ADT7410_INTERRUPT_MODE;
-   conf |= ADT7410_OP_MODE_CONTINUOUS;
-   
-   writeI2c(ADT7410_CONFIGURATION_REG, conf); 
+  byte conf = ADT7410_16BIT_RESOLUTIION;
+  conf |= ADT7410_16BIT_OP_MODE_1FAULT;
+  conf |= ADT7410_CT_LOW;
+  conf |= ADT7410_INT_LOW;
+  conf |= ADT7410_INTERRUPT_MODE;
+  conf |= ADT7410_OP_MODE_CONTINUOUS;
+
+  writeI2c(ADT7410_CONFIGURATION_REG, conf); 
 }
 
-float adt7410::readTemperature()
+float FaBoTemperature::readTemperature()
 {
   byte buffer[2];
   uint16_t val;
@@ -47,7 +47,7 @@ float adt7410::readTemperature()
 }
 
 // I2Cへの書き込み
-void adt7410::writeI2c(byte register_addr, byte value) {
+void FaBoTemperature::writeI2c(byte register_addr, byte value) {
   Wire.begin();       // I2Cの開始
   Wire.beginTransmission(ADT7410_SLAVE_ADDRESS);  
   Wire.write(register_addr);         
@@ -56,7 +56,7 @@ void adt7410::writeI2c(byte register_addr, byte value) {
 }
 
 // I2Cへの読み込み
-void adt7410::readI2c(byte register_addr, int num, byte buffer[]) {
+void FaBoTemperature::readI2c(byte register_addr, int num, byte buffer[]) {
   Wire.begin();       // I2Cの開始
   Wire.beginTransmission(ADT7410_SLAVE_ADDRESS); 
   Wire.write(register_addr);           
@@ -73,5 +73,3 @@ void adt7410::readI2c(byte register_addr, int num, byte buffer[]) {
   }
   Wire.endTransmission();         
 }
-
-adt7410 faboTemperature;

@@ -27,17 +27,13 @@
 #define ADT7410_OP_MODE_SPS 0b10
 #define ADT7410_OP_MODE_SHUTDOWN 0b11
 
-
-
-class adt7410
+class FaBoTemperature
 {
 public:
-  bool searchDevice(void);
-  void configure(void);
-  float readTemperature(void);
+	bool searchDevice(void);
+	void configure(void);
+	float readTemperature(void);
 private:
-  void readI2c(byte register_addr, int num, byte *buf);
-  void writeI2c(byte register_addr, byte value);
+	void readI2c(byte register_addr, int num, byte *buf);
+	void writeI2c(byte register_addr, byte value);
 };
-
-extern adt7410 faboTemperature;
