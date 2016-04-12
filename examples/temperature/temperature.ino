@@ -1,6 +1,8 @@
 #include <Wire.h>
 #include "fabo-adt7410.h"
 
+FaBoTemperature faboTemperature;
+
 void setup() {
   Serial.begin(9600);
   
